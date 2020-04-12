@@ -1,0 +1,6 @@
+#alias
+alias app="cd /var/www"
+alias ll="ls -alhF"
+alias memflush="echo \"flush_all\" | nc servicememcached 11211"
+alias xoff="sudo sed -i 's/^zend_extension/;zend_extension/g' $PHP_INI_DIR/php.ini && sudo /etc/init.d/apache2 reload"
+alias xon="sudo sed -i 's/^;zend_extension/zend_extension/g' $PHP_INI_DIR/php.ini && sudo /etc/init.d/apache2 reload"
