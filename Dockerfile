@@ -37,7 +37,7 @@ RUN pecl install xdebug \
     && echo ";zend_extension=$(find / -iname xdebug.so)" >> $PHP_INI_DIR/php.ini \
     && cat /tmp/xdebug.ini >> $PHP_INI_DIR/php.ini
 RUN sed -i "s/xdebug\.remote_host=.*/xdebug\.remote_host=$(getent hosts host.docker.internal | awk '{ print $1 }')/" $PHP_INI_DIR/php.ini
-ENV PHP_IDE_CONFIG="serverName=01machinery"
+ENV PHP_IDE_CONFIG="serverName=application"
 ENV XDEBUG_CONFIG="idekey=PHPSTORM"
 
 RUN mkdir /home/utente \
