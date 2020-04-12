@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  zf:
+    build: .
+    ports:
+      - "8083:80"
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www:cached
+      - ./utils/shell_history:/home/utente/shell_history
+    networks:
+      - frontend
+    environment:
+      - HISTFILE=/home/utente/shell_history/.zsh_history
+  db:
+    image: mysql:5.6.40
+    ports:
+      - 3309:3306
+    restart: always
+    volumes:
+      -  testdb:/var/lib/mysql
+    env_file:
+      - .env
+    networks:
+      - frontend
+volumes:
+  testdb:
+networks:
+  frontend:
